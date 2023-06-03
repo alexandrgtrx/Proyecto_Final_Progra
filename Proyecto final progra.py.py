@@ -2,6 +2,37 @@ import tkinter as tk
 import random
 #import numpy as np //aun no esta agregado, pero se utilizara
 
+def cuenta_regresiva():
+    # Crear la ventana de la cuenta regresiva
+    ventana = tk.Tk()
+    ventana.title("Cuenta Regresiva")
+    ventana.geometry("200x100")
+
+    # Crear una etiqueta para mostrar los segundos restantes
+    etiqueta = tk.Label(ventana, font=("Helvetica", 48))
+    etiqueta.pack(pady=20)
+
+    # Inicializar el valor de los segundos en 25
+    segundos = 25
+
+    # Función para actualizar la etiqueta con el valor actual de segundos
+    def actualizar_etiqueta():
+        nonlocal segundos
+        etiqueta.config(text=str(segundos))
+        if segundos > 0:
+            segundos -= 1
+            etiqueta.after(1000, actualizar_etiqueta)
+
+    # Llamar a la función para iniciar la cuenta regresiva
+    actualizar_etiqueta()
+
+    # Ejecutar el bucle principal de la ventana
+    ventana.mainloop()
+
+# Para jecutar la función de cuenta regresiva la llamamos con :
+# cuenta_regresiva()
+
+
 
 def boton_clicado():
     print("Has clicado un botón")
